@@ -1,0 +1,11 @@
+J:\VS2013\CollectApp\CollectApp\bin\Debug\CollectApp.exe
+J:\VS2013\CollectApp\CollectApp\bin\Debug\CollectApp.pdb
+J:\VS2013\CollectApp\CollectApp\obj\Debug\CollectApp.App.resources
+J:\VS2013\CollectApp\CollectApp\obj\Debug\CollectApp.Properties.Resources.resources
+J:\VS2013\CollectApp\CollectApp\obj\Debug\CollectApp.csproj.GenerateResource.Cache
+J:\VS2013\CollectApp\CollectApp\obj\Debug\CollectApp.exe
+J:\VS2013\CollectApp\CollectApp\obj\Debug\CollectApp.pdb
+J:\VS2013\CollectApp\CollectApp\bin\Debug\HtmlAgilityPack.dll
+J:\VS2013\CollectApp\CollectApp\bin\Debug\HtmlAgilityPack.pdb
+J:\VS2013\CollectApp\CollectApp\bin\Debug\HtmlAgilityPack.xml
+J:\VS2013\CollectApp\CollectApp\obj\Debug\CollectApp.csprojResolveAssemblyReference.cache
