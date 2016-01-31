@@ -32,6 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=5.3.1.0, Culture=neutral, PublicKeyToken=9ec0ff091d04b091, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="HFSoft.Component.Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\HFSoft.Component.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\HtmlAgilityPack.dll</HintPath>
@@ -54,10 +62,14 @@
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
     <Compile Include="common\Core.cs" />
+    <Compile Include="common\ExcelHelper.cs" />
     <Compile Include="common\HTMLHelper.cs" />
     <Compile Include="common\XPath.cs" />
+    <Compile Include="config\Config.cs" />
+    <Compile Include="model\M_Category.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="services\S_Core.cs" />
     <EmbeddedResource Include="App.resx">
       <DependentUpon>App.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,6 +93,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="lib\Aspose.Cells.dll" />
+    <Content Include="lib\HFSoft.Component.Windows.dll" />
     <Content Include="lib\HtmlAgilityPack.dll" />
     <Content Include="lib\HtmlAgilityPack.pdb" />
     <Content Include="lib\HtmlAgilityPack.xml" />

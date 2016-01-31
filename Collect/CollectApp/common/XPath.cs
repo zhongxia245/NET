@@ -15,5 +15,21 @@ namespace CollectApp.common
         /// 解析公司名称总页数
         /// </summary>
         public static  string TOTALPAGE = "//div[@id='AspNetPager1']/div[1]";
+
+        /// <summary>
+        /// 第一期类别
+        /// </summary>
+        public static string ONE = "//ul[@id='phase1']/li/a";
+
+        /// <summary>
+        /// 第二期类别
+        /// </summary>
+        public static string TWO = "//ul[@id='phase2']/li/a";
+
+        /// <summary>
+        /// 第三期类别
+        /// </summary>
+        public static string THREE = "//ul[@id='phase3']/li/a";
+
     }
 }

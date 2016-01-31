@@ -331,11 +331,16 @@ namespace CollectApp
                 Stream myStream = hwrs.GetResponseStream();
                 StreamReader sr = new StreamReader(myStream, Encoding.UTF8);
                 StringBuilder sb = new StringBuilder();
-                while (-1 != sr.Peek())
-                {
-                    sb.Append(sr.ReadLine() + "\r\n");
-                }
-                strResult = sb.ToString();
+                
+                // 使用循环遍历的有问题，经常没有遍历结束
+                //while (sr.Peek() >= 0)
+                //{
+                //    sb.Append(sr.ReadLine() + "\r\n");
+                //}
+
+                //使用ReadToEnd 就不会出现该问题
+                strResult = sr.ReadToEnd();
+                
                 hwrs.Close();
             }
             catch (Exception ee)

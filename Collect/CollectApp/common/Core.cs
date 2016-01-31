@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace CollectApp.common
 {
@@ -16,6 +18,29 @@ namespace CollectApp.common
     {
 
         #region 2. 爬虫，业务逻辑接口
+
+        /// <summary>
+        /// 获取第一期类别
+        /// </summary>
+        /// <returns></returns>
+        public static Hashtable GetAll(string url)
+        {
+            Hashtable ht = new Hashtable();
+            ht.Add(1, GetCategory(url, XPath.ONE));
+            ht.Add(2, GetCategory(url, XPath.TWO));
+            ht.Add(3, GetCategory(url, XPath.THREE));
+            return ht;
+        }
+        
+
+        /// <summary>
+        /// 获取类别
+        /// </summary>
+        /// <returns></returns>
+        public static Hashtable GetCategory(string url, string xpath)
+        {
+            return GetHashtableByUrl(url, xpath);
+        }
 
         /// <summary>
         /// 抓取指定站点公司的名称
@@ -56,10 +81,13 @@ namespace CollectApp.common
 
             //获取当前类别总页数
             int totalPage = GetTotalPage(doc, XPath.TOTALPAGE);
+            Console.WriteLine(String.Format("totalPage:{0}", totalPage));
 
             for (int i = 1; i <= totalPage; i++)
             {
                 string url_page = url + "&page=" + i;
+                Console.WriteLine(String.Format("url_page:{0}", url_page));
+                // Thread.Sleep(500);
                 ds.Tables.Add(GetDataTableByUrl(url_page, XPath.COMPANYNAME));
             }
 
@@ -94,6 +122,9 @@ namespace CollectApp.common
 
         #region 1. 爬虫的核心底层接口
 
+        #region 1.1 返回字符串的数据
+
+
         /// <summary>
         /// 根据需要采集的地址，和解析规则，采集回相对应的数据
         /// </summary>
@@ -120,37 +151,6 @@ namespace CollectApp.common
         }
 
         /// <summary>
-        /// 根据需要采集的地址，和解析规则，采集回相对应的数据[列表数据 DataTable]
-        /// </summary>
-        /// <param name="url">需要采集的地址</param>
-        /// <param name="xPath">解析规则[HtmlAgilityPack类库的解析规则]</param>
-        /// <returns></returns>
-        public static DataTable GetDataTableByUrl(string url, string xPath)
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("cn", System.Type.GetType("System.String"));
-            dt.Columns.Add("en", System.Type.GetType("System.String"));
-
-            HtmlAgilityPack.HtmlDocument doc = GetHTML(url);
-            //获取所有公司的名称
-            HtmlAgilityPack.HtmlNodeCollection collection = doc.DocumentNode.SelectNodes(xPath);
-
-            StringBuilder sb = new StringBuilder();
-            if (collection != null)
-            {
-                foreach (HtmlAgilityPack.HtmlNode item in collection)
-                {
-                    DataRow dr = dt.NewRow();
-                    dr["cn"] = item.InnerText;
-                    dr["en"] = item.InnerText;
-                    dt.Rows.Add(dr);
-                }
-            }
-            return dt;
-        }
-
-
-        /// <summary>
         /// 根据HTML文档，和解析规则，解析出需要的数据
         /// </summary>
         /// <param name="doc">html文档【HtmlAgilityPack.HtmlDocument对象】</param>
@@ -173,6 +173,85 @@ namespace CollectApp.common
             }
             return sb.ToString();
         }
+
+        #endregion
+
+        /// <summary>
+        /// 根据需要采集的地址，和解析规则，采集回相对应的数据[列表数据 DataTable]
+        /// </summary>
+        /// <param name="url">需要采集的地址</param>
+        /// <param name="xPath">解析规则[HtmlAgilityPack类库的解析规则]</param>
+        /// <returns></returns>
+        public static DataTable GetDataTableByUrl(string url, string xPath)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("id", System.Type.GetType("System.String"));
+            dt.Columns.Add("cn", System.Type.GetType("System.String"));
+            dt.Columns.Add("en", System.Type.GetType("System.String"));
+
+            HtmlAgilityPack.HtmlDocument doc = GetHTML(url);
+            //获取所有公司的名称
+            HtmlAgilityPack.HtmlNodeCollection collection = doc.DocumentNode.SelectNodes(xPath);
+
+            StringBuilder sb = new StringBuilder();
+            if (collection != null)
+            {
+                string preId = "";
+               
+                foreach (HtmlAgilityPack.HtmlNode item in collection)
+                {
+                    DataRow dr = dt.NewRow();
+
+                    //获取企业ID
+                    string href = item.Attributes["href"] != null ? item.Attributes["href"].Value : "";
+                    string[] strs = href.Split(new char[] { '=' });
+                    string id = strs.Length == 2 ? strs[1] : "";
+                    preId = id;
+
+                    Console.WriteLine(String.Format("id:{0} || name:{1}",id,item.InnerText));
+                    if (id != "")
+                    {
+                        dr["id"] = id;
+                        dr["cn"] = item.InnerText;
+                        dr["en"] = item.InnerText;
+                        dt.Rows.Add(dr);
+                    }
+                    else {
+                        string name = item.InnerText;
+                    }
+                }
+            }
+            return dt;
+        }
+
+        /// <summary>
+        /// 根据需要采集的地址，和解析规则，采集回相对应的数据[列表数据 DataTable]
+        /// </summary>
+        /// <param name="url">需要采集的地址</param>
+        /// <param name="xPath">解析规则[HtmlAgilityPack类库的解析规则]</param>
+        /// <returns></returns>
+        public static Hashtable GetHashtableByUrl(string url, string xPath)
+        {
+            Hashtable ht = new Hashtable();
+            HtmlAgilityPack.HtmlDocument doc = GetHTML(url);
+            //获取所有公司的名称
+            HtmlAgilityPack.HtmlNodeCollection collection = doc.DocumentNode.SelectNodes(xPath);
+
+            StringBuilder sb = new StringBuilder();
+            if (collection != null)
+            {
+                foreach (HtmlAgilityPack.HtmlNode item in collection)
+                {
+                    //获取企业ID
+                    string href = item.Attributes["href"] != null ? item.Attributes["href"].Value : "";
+                    string[] strs = href.Split(new char[] { '?' });
+                    string categryId = strs.Length == 2 ? strs[1] : "";
+                    ht.Add(categryId, item.InnerText);
+                }
+            }
+            return ht;
+        }
+
 
         /// <summary>
         /// 根据URL地址，采集会完整的HTML文档

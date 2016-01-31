@@ -28,73 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_one = new System.Windows.Forms.Button();
-            this.btn_two = new System.Windows.Forms.Button();
-            this.btn_three = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_url = new System.Windows.Forms.TextBox();
-            this.txt_result = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             this.dgv_Company = new System.Windows.Forms.DataGridView();
             this.cn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.en = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tab_all = new System.Windows.Forms.TabControl();
+            this.tab_two = new System.Windows.Forms.TabPage();
+            this.btn_startCollect = new System.Windows.Forms.Button();
+            this.tab_three = new System.Windows.Forms.TabPage();
+            this.tab_one = new System.Windows.Forms.TabPage();
+            this.btn_export = new System.Windows.Forms.Button();
+            this.flp1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flp2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flp3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cb_all = new System.Windows.Forms.CheckBox();
+            this.btn_collect_export = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Company)).BeginInit();
+            this.tab_all.SuspendLayout();
+            this.tab_two.SuspendLayout();
+            this.tab_three.SuspendLayout();
+            this.tab_one.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btn_one
-            // 
-            this.btn_one.Location = new System.Drawing.Point(20, 58);
-            this.btn_one.Name = "btn_one";
-            this.btn_one.Size = new System.Drawing.Size(75, 23);
-            this.btn_one.TabIndex = 0;
-            this.btn_one.Text = "第一期";
-            this.btn_one.UseVisualStyleBackColor = true;
-            this.btn_one.Click += new System.EventHandler(this.btn_one_Click);
-            // 
-            // btn_two
-            // 
-            this.btn_two.Location = new System.Drawing.Point(105, 58);
-            this.btn_two.Name = "btn_two";
-            this.btn_two.Size = new System.Drawing.Size(75, 23);
-            this.btn_two.TabIndex = 1;
-            this.btn_two.Text = "第二期";
-            this.btn_two.UseVisualStyleBackColor = true;
-            this.btn_two.Click += new System.EventHandler(this.btn_two_Click);
-            // 
-            // btn_three
-            // 
-            this.btn_three.Location = new System.Drawing.Point(197, 58);
-            this.btn_three.Name = "btn_three";
-            this.btn_three.Size = new System.Drawing.Size(75, 23);
-            this.btn_three.TabIndex = 2;
-            this.btn_three.Text = "第三期";
-            this.btn_three.UseVisualStyleBackColor = true;
-            this.btn_three.Click += new System.EventHandler(this.btn_three_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "采集地址";
-            // 
-            // txt_url
-            // 
-            this.txt_url.Location = new System.Drawing.Point(112, 12);
-            this.txt_url.Name = "txt_url";
-            this.txt_url.Size = new System.Drawing.Size(334, 21);
-            this.txt_url.TabIndex = 4;
-            this.txt_url.Text = "http://i.cantonfair.org.cn/cn/expexhibitorlist.aspx?categoryno=402";
-            // 
-            // txt_result
-            // 
-            this.txt_result.Location = new System.Drawing.Point(20, 96);
-            this.txt_result.Multiline = true;
-            this.txt_result.Name = "txt_result";
-            this.txt_result.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_result.Size = new System.Drawing.Size(499, 243);
-            this.txt_result.TabIndex = 5;
             // 
             // dgv_Company
             // 
@@ -102,39 +56,113 @@
             this.dgv_Company.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cn,
             this.en});
-            this.dgv_Company.Location = new System.Drawing.Point(20, 346);
+            resources.ApplyResources(this.dgv_Company, "dgv_Company");
             this.dgv_Company.Name = "dgv_Company";
             this.dgv_Company.RowTemplate.Height = 23;
-            this.dgv_Company.Size = new System.Drawing.Size(499, 258);
-            this.dgv_Company.TabIndex = 6;
             // 
             // cn
             // 
             this.cn.DataPropertyName = "cn";
-            this.cn.HeaderText = "中文公司名";
+            resources.ApplyResources(this.cn, "cn");
             this.cn.Name = "cn";
             // 
             // en
             // 
             this.en.DataPropertyName = "en";
-            this.en.HeaderText = "英文公司名";
+            resources.ApplyResources(this.en, "en");
             this.en.Name = "en";
+            // 
+            // tab_all
+            // 
+            resources.ApplyResources(this.tab_all, "tab_all");
+            this.tab_all.Controls.Add(this.tab_one);
+            this.tab_all.Controls.Add(this.tab_two);
+            this.tab_all.Controls.Add(this.tab_three);
+            this.tab_all.Name = "tab_all";
+            this.tab_all.SelectedIndex = 0;
+            // 
+            // tab_two
+            // 
+            this.tab_two.Controls.Add(this.flp2);
+            resources.ApplyResources(this.tab_two, "tab_two");
+            this.tab_two.Name = "tab_two";
+            this.tab_two.UseVisualStyleBackColor = true;
+            // 
+            // btn_startCollect
+            // 
+            resources.ApplyResources(this.btn_startCollect, "btn_startCollect");
+            this.btn_startCollect.Name = "btn_startCollect";
+            this.btn_startCollect.UseVisualStyleBackColor = true;
+            this.btn_startCollect.Click += new System.EventHandler(this.btn_startCollect_Click);
+            // 
+            // tab_three
+            // 
+            this.tab_three.Controls.Add(this.flp3);
+            resources.ApplyResources(this.tab_three, "tab_three");
+            this.tab_three.Name = "tab_three";
+            this.tab_three.UseVisualStyleBackColor = true;
+            // 
+            // tab_one
+            // 
+            this.tab_one.Controls.Add(this.flp1);
+            resources.ApplyResources(this.tab_one, "tab_one");
+            this.tab_one.Name = "tab_one";
+            this.tab_one.UseVisualStyleBackColor = true;
+            // 
+            // btn_export
+            // 
+            resources.ApplyResources(this.btn_export, "btn_export");
+            this.btn_export.Name = "btn_export";
+            this.btn_export.UseVisualStyleBackColor = true;
+            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
+            // 
+            // flp1
+            // 
+            resources.ApplyResources(this.flp1, "flp1");
+            this.flp1.Name = "flp1";
+            // 
+            // flp2
+            // 
+            resources.ApplyResources(this.flp2, "flp2");
+            this.flp2.Name = "flp2";
+            // 
+            // flp3
+            // 
+            resources.ApplyResources(this.flp3, "flp3");
+            this.flp3.Name = "flp3";
+            // 
+            // cb_all
+            // 
+            resources.ApplyResources(this.cb_all, "cb_all");
+            this.cb_all.Name = "cb_all";
+            this.cb_all.UseVisualStyleBackColor = true;
+            this.cb_all.CheckedChanged += new System.EventHandler(this.cb_all_CheckedChanged);
+            // 
+            // btn_collect_export
+            // 
+            resources.ApplyResources(this.btn_collect_export, "btn_collect_export");
+            this.btn_collect_export.Name = "btn_collect_export";
+            this.btn_collect_export.UseVisualStyleBackColor = true;
+            this.btn_collect_export.Click += new System.EventHandler(this.btn_collect_export_Click);
             // 
             // App
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 616);
+            this.Controls.Add(this.btn_collect_export);
+            this.Controls.Add(this.cb_all);
+            this.Controls.Add(this.btn_export);
+            this.Controls.Add(this.btn_startCollect);
+            this.Controls.Add(this.tab_all);
             this.Controls.Add(this.dgv_Company);
-            this.Controls.Add(this.txt_result);
-            this.Controls.Add(this.txt_url);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btn_three);
-            this.Controls.Add(this.btn_two);
-            this.Controls.Add(this.btn_one);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "App";
-            this.Text = "采集程序";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Company)).EndInit();
+            this.tab_all.ResumeLayout(false);
+            this.tab_two.ResumeLayout(false);
+            this.tab_three.ResumeLayout(false);
+            this.tab_one.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,15 +170,20 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_one;
-        private System.Windows.Forms.Button btn_two;
-        private System.Windows.Forms.Button btn_three;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_url;
-        private System.Windows.Forms.TextBox txt_result;
         private System.Windows.Forms.DataGridView dgv_Company;
         private System.Windows.Forms.DataGridViewTextBoxColumn cn;
         private System.Windows.Forms.DataGridViewTextBoxColumn en;
+        private System.Windows.Forms.TabControl tab_all;
+        private System.Windows.Forms.TabPage tab_two;
+        private System.Windows.Forms.Button btn_startCollect;
+        private System.Windows.Forms.TabPage tab_three;
+        private System.Windows.Forms.TabPage tab_one;
+        private System.Windows.Forms.Button btn_export;
+        private System.Windows.Forms.FlowLayoutPanel flp1;
+        private System.Windows.Forms.FlowLayoutPanel flp2;
+        private System.Windows.Forms.FlowLayoutPanel flp3;
+        private System.Windows.Forms.CheckBox cb_all;
+        private System.Windows.Forms.Button btn_collect_export;
     }
 }
 
