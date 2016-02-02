@@ -125,14 +125,17 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dgv_Company.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 194</value>
+    <value>12, 396</value>
   </data>
   <data name="dgv_Company.Size" type="System.Drawing.Size, System.Drawing">
-    <value>637, 282</value>
+    <value>637, 80</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="dgv_Company.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
+  </data>
+  <data name="dgv_Company.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;dgv_Company.Name" xml:space="preserve">
     <value>dgv_Company</value>
@@ -144,7 +147,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;dgv_Company.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <metadata name="cn.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -199,10 +202,10 @@
     <value>2</value>
   </data>
   <data name="tab_all.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+    <value>3, 3</value>
   </data>
   <data name="tab_all.Size" type="System.Drawing.Size, System.Drawing">
-    <value>641, 138</value>
+    <value>644, 191</value>
   </data>
   <data name="tab_all.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -214,112 +217,10 @@
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tab_all.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel1</value>
   </data>
   <data name="&gt;&gt;tab_all.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;flp2.Name" xml:space="preserve">
-    <value>flp2</value>
-  </data>
-  <data name="&gt;&gt;flp2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flp2.Parent" xml:space="preserve">
-    <value>tab_two</value>
-  </data>
-  <data name="&gt;&gt;flp2.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="tab_two.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tab_two.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tab_two.Size" type="System.Drawing.Size, System.Drawing">
-    <value>633, 112</value>
-  </data>
-  <data name="tab_two.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tab_two.Text" xml:space="preserve">
-    <value>第二期</value>
-  </data>
-  <data name="&gt;&gt;tab_two.Name" xml:space="preserve">
-    <value>tab_two</value>
-  </data>
-  <data name="&gt;&gt;tab_two.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tab_two.Parent" xml:space="preserve">
-    <value>tab_all</value>
-  </data>
-  <data name="&gt;&gt;tab_two.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btn_startCollect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>417, 151</value>
-  </data>
-  <data name="btn_startCollect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 34</value>
-  </data>
-  <data name="btn_startCollect.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="btn_startCollect.Text" xml:space="preserve">
-    <value>开始采集</value>
-  </data>
-  <data name="&gt;&gt;btn_startCollect.Name" xml:space="preserve">
-    <value>btn_startCollect</value>
-  </data>
-  <data name="&gt;&gt;btn_startCollect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btn_startCollect.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btn_startCollect.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;flp3.Name" xml:space="preserve">
-    <value>flp3</value>
-  </data>
-  <data name="&gt;&gt;flp3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flp3.Parent" xml:space="preserve">
-    <value>tab_three</value>
-  </data>
-  <data name="&gt;&gt;flp3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tab_three.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tab_three.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tab_three.Size" type="System.Drawing.Size, System.Drawing">
-    <value>633, 112</value>
-  </data>
-  <data name="tab_three.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tab_three.Text" xml:space="preserve">
-    <value>第三期</value>
-  </data>
-  <data name="&gt;&gt;tab_three.Name" xml:space="preserve">
-    <value>tab_three</value>
-  </data>
-  <data name="&gt;&gt;tab_three.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tab_three.Parent" xml:space="preserve">
-    <value>tab_all</value>
-  </data>
-  <data name="&gt;&gt;tab_three.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="&gt;&gt;flp1.Name" xml:space="preserve">
     <value>flp1</value>
@@ -340,7 +241,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tab_one.Size" type="System.Drawing.Size, System.Drawing">
-    <value>633, 112</value>
+    <value>636, 165</value>
   </data>
   <data name="tab_one.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -360,33 +261,6 @@
   <data name="&gt;&gt;tab_one.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="btn_export.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btn_export.Location" type="System.Drawing.Point, System.Drawing">
-    <value>498, 151</value>
-  </data>
-  <data name="btn_export.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 34</value>
-  </data>
-  <data name="btn_export.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="btn_export.Text" xml:space="preserve">
-    <value>导出</value>
-  </data>
-  <data name="&gt;&gt;btn_export.Name" xml:space="preserve">
-    <value>btn_export</value>
-  </data>
-  <data name="&gt;&gt;btn_export.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btn_export.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btn_export.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="flp1.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -397,7 +271,7 @@
     <value>3, 3</value>
   </data>
   <data name="flp1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>627, 106</value>
+    <value>630, 159</value>
   </data>
   <data name="flp1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -414,6 +288,45 @@
   <data name="&gt;&gt;flp1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;flp2.Name" xml:space="preserve">
+    <value>flp2</value>
+  </data>
+  <data name="&gt;&gt;flp2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flp2.Parent" xml:space="preserve">
+    <value>tab_two</value>
+  </data>
+  <data name="&gt;&gt;flp2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tab_two.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tab_two.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tab_two.Size" type="System.Drawing.Size, System.Drawing">
+    <value>636, 165</value>
+  </data>
+  <data name="tab_two.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tab_two.Text" xml:space="preserve">
+    <value>第二期</value>
+  </data>
+  <data name="&gt;&gt;tab_two.Name" xml:space="preserve">
+    <value>tab_two</value>
+  </data>
+  <data name="&gt;&gt;tab_two.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tab_two.Parent" xml:space="preserve">
+    <value>tab_all</value>
+  </data>
+  <data name="&gt;&gt;tab_two.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="flp2.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -424,7 +337,7 @@
     <value>3, 3</value>
   </data>
   <data name="flp2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>627, 106</value>
+    <value>630, 159</value>
   </data>
   <data name="flp2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -441,6 +354,45 @@
   <data name="&gt;&gt;flp2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;flp3.Name" xml:space="preserve">
+    <value>flp3</value>
+  </data>
+  <data name="&gt;&gt;flp3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flp3.Parent" xml:space="preserve">
+    <value>tab_three</value>
+  </data>
+  <data name="&gt;&gt;flp3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tab_three.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tab_three.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tab_three.Size" type="System.Drawing.Size, System.Drawing">
+    <value>636, 165</value>
+  </data>
+  <data name="tab_three.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tab_three.Text" xml:space="preserve">
+    <value>第三期</value>
+  </data>
+  <data name="&gt;&gt;tab_three.Name" xml:space="preserve">
+    <value>tab_three</value>
+  </data>
+  <data name="&gt;&gt;tab_three.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tab_three.Parent" xml:space="preserve">
+    <value>tab_all</value>
+  </data>
+  <data name="&gt;&gt;tab_three.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="flp3.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -451,7 +403,7 @@
     <value>3, 3</value>
   </data>
   <data name="flp3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>627, 106</value>
+    <value>630, 159</value>
   </data>
   <data name="flp3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -472,7 +424,7 @@
     <value>True</value>
   </data>
   <data name="cb_all.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 160</value>
+    <value>16, 222</value>
   </data>
   <data name="cb_all.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 16</value>
@@ -493,22 +445,25 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cb_all.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="btn_collect_export.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btn_collect_export.Location" type="System.Drawing.Point, System.Drawing">
-    <value>578, 151</value>
+    <value>373, 214</value>
   </data>
   <data name="btn_collect_export.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 34</value>
+    <value>88, 34</value>
   </data>
   <data name="btn_collect_export.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
   <data name="btn_collect_export.Text" xml:space="preserve">
-    <value>采集并导出</value>
+    <value>采集(单线程)</value>
+  </data>
+  <data name="btn_collect_export.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;btn_collect_export.Name" xml:space="preserve">
     <value>btn_collect_export</value>
@@ -520,8 +475,113 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_collect_export.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txt_result.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 258</value>
+  </data>
+  <data name="txt_result.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txt_result.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="txt_result.Size" type="System.Drawing.Size, System.Drawing">
+    <value>634, 130</value>
+  </data>
+  <data name="txt_result.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;txt_result.Name" xml:space="preserve">
+    <value>txt_result</value>
+  </data>
+  <data name="&gt;&gt;txt_result.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_result.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txt_result.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btn_single.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btn_single.Location" type="System.Drawing.Point, System.Drawing">
+    <value>479, 212</value>
+  </data>
+  <data name="btn_single.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 36</value>
+  </data>
+  <data name="btn_single.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="btn_single.Text" xml:space="preserve">
+    <value>采集</value>
+  </data>
+  <data name="&gt;&gt;btn_single.Name" xml:space="preserve">
+    <value>btn_single</value>
+  </data>
+  <data name="&gt;&gt;btn_single.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_single.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btn_single.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btn_all.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btn_all.Location" type="System.Drawing.Point, System.Drawing">
+    <value>573, 212</value>
+  </data>
+  <data name="btn_all.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 36</value>
+  </data>
+  <data name="btn_all.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="btn_all.Text" xml:space="preserve">
+    <value>全部采集</value>
+  </data>
+  <data name="&gt;&gt;btn_all.Name" xml:space="preserve">
+    <value>btn_all</value>
+  </data>
+  <data name="&gt;&gt;btn_all.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_all.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btn_all.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>650, 194</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -529,7 +589,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>665, 485</value>
+    <value>665, 413</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
@@ -548,6 +608,12 @@
   </data>
   <data name="&gt;&gt;en.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;timer1.Name" xml:space="preserve">
+    <value>timer1</value>
+  </data>
+  <data name="&gt;&gt;timer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>App</value>

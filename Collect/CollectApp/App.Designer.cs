@@ -28,26 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             this.dgv_Company = new System.Windows.Forms.DataGridView();
             this.cn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.en = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_all = new System.Windows.Forms.TabControl();
-            this.tab_two = new System.Windows.Forms.TabPage();
-            this.btn_startCollect = new System.Windows.Forms.Button();
-            this.tab_three = new System.Windows.Forms.TabPage();
             this.tab_one = new System.Windows.Forms.TabPage();
-            this.btn_export = new System.Windows.Forms.Button();
             this.flp1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tab_two = new System.Windows.Forms.TabPage();
             this.flp2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tab_three = new System.Windows.Forms.TabPage();
             this.flp3 = new System.Windows.Forms.FlowLayoutPanel();
             this.cb_all = new System.Windows.Forms.CheckBox();
             this.btn_collect_export = new System.Windows.Forms.Button();
+            this.txt_result = new System.Windows.Forms.TextBox();
+            this.btn_single = new System.Windows.Forms.Button();
+            this.btn_all = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Company)).BeginInit();
             this.tab_all.SuspendLayout();
+            this.tab_one.SuspendLayout();
             this.tab_two.SuspendLayout();
             this.tab_three.SuspendLayout();
-            this.tab_one.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_Company
@@ -81,27 +86,6 @@
             this.tab_all.Name = "tab_all";
             this.tab_all.SelectedIndex = 0;
             // 
-            // tab_two
-            // 
-            this.tab_two.Controls.Add(this.flp2);
-            resources.ApplyResources(this.tab_two, "tab_two");
-            this.tab_two.Name = "tab_two";
-            this.tab_two.UseVisualStyleBackColor = true;
-            // 
-            // btn_startCollect
-            // 
-            resources.ApplyResources(this.btn_startCollect, "btn_startCollect");
-            this.btn_startCollect.Name = "btn_startCollect";
-            this.btn_startCollect.UseVisualStyleBackColor = true;
-            this.btn_startCollect.Click += new System.EventHandler(this.btn_startCollect_Click);
-            // 
-            // tab_three
-            // 
-            this.tab_three.Controls.Add(this.flp3);
-            resources.ApplyResources(this.tab_three, "tab_three");
-            this.tab_three.Name = "tab_three";
-            this.tab_three.UseVisualStyleBackColor = true;
-            // 
             // tab_one
             // 
             this.tab_one.Controls.Add(this.flp1);
@@ -109,22 +93,29 @@
             this.tab_one.Name = "tab_one";
             this.tab_one.UseVisualStyleBackColor = true;
             // 
-            // btn_export
-            // 
-            resources.ApplyResources(this.btn_export, "btn_export");
-            this.btn_export.Name = "btn_export";
-            this.btn_export.UseVisualStyleBackColor = true;
-            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
-            // 
             // flp1
             // 
             resources.ApplyResources(this.flp1, "flp1");
             this.flp1.Name = "flp1";
             // 
+            // tab_two
+            // 
+            this.tab_two.Controls.Add(this.flp2);
+            resources.ApplyResources(this.tab_two, "tab_two");
+            this.tab_two.Name = "tab_two";
+            this.tab_two.UseVisualStyleBackColor = true;
+            // 
             // flp2
             // 
             resources.ApplyResources(this.flp2, "flp2");
             this.flp2.Name = "flp2";
+            // 
+            // tab_three
+            // 
+            this.tab_three.Controls.Add(this.flp3);
+            resources.ApplyResources(this.tab_three, "tab_three");
+            this.tab_three.Name = "tab_three";
+            this.tab_three.UseVisualStyleBackColor = true;
             // 
             // flp3
             // 
@@ -142,27 +133,61 @@
             // 
             resources.ApplyResources(this.btn_collect_export, "btn_collect_export");
             this.btn_collect_export.Name = "btn_collect_export";
-            this.btn_collect_export.UseVisualStyleBackColor = true;
+            this.btn_collect_export.UseVisualStyleBackColor = false;
             this.btn_collect_export.Click += new System.EventHandler(this.btn_collect_export_Click);
+            // 
+            // txt_result
+            // 
+            resources.ApplyResources(this.txt_result, "txt_result");
+            this.txt_result.Name = "txt_result";
+            this.txt_result.TextChanged += new System.EventHandler(this.txt_result_TextChanged);
+            // 
+            // btn_single
+            // 
+            resources.ApplyResources(this.btn_single, "btn_single");
+            this.btn_single.Name = "btn_single";
+            this.btn_single.UseVisualStyleBackColor = true;
+            this.btn_single.Click += new System.EventHandler(this.btn_single_Click);
+            // 
+            // btn_all
+            // 
+            resources.ApplyResources(this.btn_all, "btn_all");
+            this.btn_all.Name = "btn_all";
+            this.btn_all.UseVisualStyleBackColor = true;
+            this.btn_all.Click += new System.EventHandler(this.btn_all_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tab_all);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // App
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btn_all);
+            this.Controls.Add(this.btn_single);
+            this.Controls.Add(this.txt_result);
             this.Controls.Add(this.btn_collect_export);
             this.Controls.Add(this.cb_all);
-            this.Controls.Add(this.btn_export);
-            this.Controls.Add(this.btn_startCollect);
-            this.Controls.Add(this.tab_all);
             this.Controls.Add(this.dgv_Company);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "App";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.App_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Company)).EndInit();
             this.tab_all.ResumeLayout(false);
+            this.tab_one.ResumeLayout(false);
             this.tab_two.ResumeLayout(false);
             this.tab_three.ResumeLayout(false);
-            this.tab_one.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,15 +200,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn en;
         private System.Windows.Forms.TabControl tab_all;
         private System.Windows.Forms.TabPage tab_two;
-        private System.Windows.Forms.Button btn_startCollect;
         private System.Windows.Forms.TabPage tab_three;
         private System.Windows.Forms.TabPage tab_one;
-        private System.Windows.Forms.Button btn_export;
         private System.Windows.Forms.FlowLayoutPanel flp1;
         private System.Windows.Forms.FlowLayoutPanel flp2;
         private System.Windows.Forms.FlowLayoutPanel flp3;
         private System.Windows.Forms.CheckBox cb_all;
         private System.Windows.Forms.Button btn_collect_export;
+        private System.Windows.Forms.TextBox txt_result;
+        private System.Windows.Forms.Button btn_single;
+        private System.Windows.Forms.Button btn_all;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
