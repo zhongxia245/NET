@@ -463,7 +463,7 @@ namespace CollectApp
 
         private void App_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (MessageBox.Show("是否退出程序？", "温馨提示：", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("是否停止采集并退出程序？", "温馨提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 System.Environment.Exit(0);
             }
