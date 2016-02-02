@@ -22,10 +22,6 @@ namespace CollectApp.model
         /// 属于第几期
         /// </summary>
         public int TimePhase { get; set; }
-
-        /// <summary>
-        /// 父类别名称
-        /// </summary>
-        public string ParentTitle { get; set; }
+        
     }
 }

@@ -81,7 +81,9 @@ namespace CollectApp.services
             dt.TableName = String.Format("第{0}期_{1}", this.Category.TimePhase, this.Category.Title);
 
             string flag = new ExcelHelper(String.Format("{0}/{1}.xls", FolderPath, String.Format("第{0}期_{1}", this.Category.TimePhase, this.Category.Title)), "").DatatableToExcel(dt);
-
+            if (flag != "") {
+                Log.Write(flag);
+            }
             //保存到全局变量中
             S_CollectThread.CompleteList.Add(this.Category.Title);
             S_CollectThread.DS.Tables.Add(dt);

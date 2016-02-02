@@ -9,10 +9,9 @@ J:\VS2013\CollectApp\CollectApp\bin\Debug\HtmlAgilityPack.dll
 J:\VS2013\CollectApp\CollectApp\bin\Debug\HtmlAgilityPack.pdb
 J:\VS2013\CollectApp\CollectApp\bin\Debug\HtmlAgilityPack.xml
 J:\VS2013\CollectApp\CollectApp\obj\Debug\CollectApp.csprojResolveAssemblyReference.cache
-J:\04_VS2013\NET\Collect\CollectApp\obj\Debug\CollectApp.exe
-J:\04_VS2013\NET\Collect\CollectApp\obj\Debug\CollectApp.pdb
 J:\04_VS2013\NET\Collect\CollectApp\bin\Debug\CollectApp.exe
 J:\04_VS2013\NET\Collect\CollectApp\bin\Debug\CollectApp.pdb
+J:\04_VS2013\NET\Collect\CollectApp\bin\Debug\Aspose.Cells.dll
 J:\04_VS2013\NET\Collect\CollectApp\bin\Debug\HFSoft.Component.Windows.dll
 J:\04_VS2013\NET\Collect\CollectApp\bin\Debug\HtmlAgilityPack.dll
 J:\04_VS2013\NET\Collect\CollectApp\bin\Debug\HtmlAgilityPack.pdb
@@ -20,5 +19,5 @@ J:\04_VS2013\NET\Collect\CollectApp\bin\Debug\HtmlAgilityPack.xml
 J:\04_VS2013\NET\Collect\CollectApp\obj\Debug\CollectApp.App.resources
 J:\04_VS2013\NET\Collect\CollectApp\obj\Debug\CollectApp.Properties.Resources.resources
 J:\04_VS2013\NET\Collect\CollectApp\obj\Debug\CollectApp.csproj.GenerateResource.Cache
-J:\04_VS2013\NET\Collect\CollectApp\bin\Debug\Aspose.Cells.dll
-J:\04_VS2013\NET\Collect\CollectApp\obj\Debug\CollectApp.csprojResolveAssemblyReference.cache
+J:\04_VS2013\NET\Collect\CollectApp\obj\Debug\CollectApp.exe
+J:\04_VS2013\NET\Collect\CollectApp\obj\Debug\CollectApp.pdb

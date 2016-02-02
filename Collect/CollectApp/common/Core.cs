@@ -70,7 +70,7 @@ namespace CollectApp.common
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        public static DataTable GetAllCompanyName_DataTable(string url)
+        public static DataTable GetAllCompanyName_DataTable(string url,int timeStage,string category)
         {
 
             DataSet ds = new DataSet();
@@ -88,7 +88,7 @@ namespace CollectApp.common
                 string url_page = url + "&page=" + i;
                 Console.WriteLine(String.Format("url_page:{0}", url_page));
                 // Thread.Sleep(500);
-                ds.Tables.Add(GetDataTableByUrl(url_page, XPath.COMPANYNAME));
+                ds.Tables.Add(GetDataTableByUrl(url_page, XPath.COMPANYNAME, timeStage, category));
             }
 
             dt = GetAllDataTable(ds);
@@ -182,12 +182,17 @@ namespace CollectApp.common
         /// <param name="url">需要采集的地址</param>
         /// <param name="xPath">解析规则[HtmlAgilityPack类库的解析规则]</param>
         /// <returns></returns>
-        public static DataTable GetDataTableByUrl(string url, string xPath)
+        public static DataTable GetDataTableByUrl(string url, string xPath,int timeStage=1,string category="")
         {
             DataTable dt = new DataTable();
+            dt.Columns.Add("type", System.Type.GetType("System.String"));
+            dt.Columns.Add("category", System.Type.GetType("System.String"));
             dt.Columns.Add("id", System.Type.GetType("System.String"));
             dt.Columns.Add("cn", System.Type.GetType("System.String"));
+            //联营
+            dt.Columns.Add("lianying_cn", System.Type.GetType("System.String"));  
             dt.Columns.Add("en", System.Type.GetType("System.String"));
+            dt.Columns.Add("lianying_en", System.Type.GetType("System.String"));
 
             HtmlAgilityPack.HtmlDocument doc = GetHTML(url);
             //获取所有公司的名称
@@ -211,13 +216,16 @@ namespace CollectApp.common
                     Console.WriteLine(String.Format("id:{0} || name:{1}",id,item.InnerText));
                     if (id != "")
                     {
+                        dr["type"] = String.Format("第{0}期",timeStage);
+                        dr["category"] = category;
                         dr["id"] = id;
                         dr["cn"] = item.InnerText;
                         dr["en"] = item.InnerText;
                         dt.Rows.Add(dr);
                     }
                     else {
-                        string name = item.InnerText;
+                        dt.Rows[dt.Rows.Count - 1]["lianying_cn"] = item.InnerText.Replace("联营：", "").Replace("Pooling Enterprise:","").Replace("(", "").Replace(")", "");
+                        dt.Rows[dt.Rows.Count - 1]["lianying_en"] = item.InnerText.Replace("联营：", "").Replace("Pooling Enterprise:", "").Replace("(", "").Replace(")", "");
                     }
                 }
             }

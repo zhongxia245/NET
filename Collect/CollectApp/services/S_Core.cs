@@ -21,32 +21,23 @@ namespace CollectApp.services
 
             for (int i = 0; i < dt1.Rows.Count; i++)
             {
-                //for (int j = 0; j < dt2.Rows.Count; j++)
+                for (int j = 0; j < dt2.Rows.Count; j++)
+                {
+                    if (dt1.Rows[i]["id"].Equals(dt2.Rows[j]["id"]))
+                    {
+                        dt1.Rows[i]["en"] = dt2.Rows[j]["en"];
+                        dt1.Rows[i]["lianying_en"] = dt2.Rows[j]["lianying_en"];
+                        break;
+                    }
+                }
+                //if (i < dt2.Rows.Count)
                 //{
-                //    if (dt1.Rows[i]["id"].Equals(dt2.Rows[j]["id"]))
-                //    {
-                //        dt1.Rows[i]["en"] = dt2.Rows[j]["en"];
-                //        break;
-                //    }
-                //    //if (i < dt2.Rows.Count)
-                //    //{
-                //    //    dt1.Rows[i]["en"] = dt2.Rows[i]["en"];
-                //    //}
-                //    //else
-                //    //{
-                //    //    dt1.Rows[i]["en"] = "No English Name";
-                //    //}
+                //    dt1.Rows[i]["en"] = dt2.Rows[i]["en"];
                 //}
-                //dt1.Rows[i]["en"] = "No English Name";
-
-                if (i < dt2.Rows.Count)
-                {
-                    dt1.Rows[i]["en"] = dt2.Rows[i]["en"];
-                }
-                else
-                {
-                    dt1.Rows[i]["en"] = "No English Name";
-                }
+                //else
+                //{
+                //    dt1.Rows[i]["en"] = "No English Name";
+                //}
             }
 
             return dt1;

@@ -1,5 +1,6 @@
 ﻿using CollectApp.common;
 using CollectApp.config;
+using CollectApp.controls;
 using CollectApp.model;
 using CollectApp.services;
 using HFSoft.Component.Windows;
@@ -13,14 +14,25 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CollectApp
 {
     public partial class App : Form
-    {   
+    {
         //导出路径默认值
-        string defaultfilePath = "";  
+        string defaultfilePath = "";
+        //加载的状态
+        StringBuilder sb_loadingState = new StringBuilder();
+        //共抓取多少条记录
+        int totalRecord = 0;
+
+        /// <summary>
+        /// 正在加载中
+        /// </summary>
+        OpaqueCommand cmd = new OpaqueCommand();
+
         public App()
         {
             InitializeComponent();
@@ -29,96 +41,41 @@ namespace CollectApp
             init();
         }
 
+
         /// <summary>
-        /// 开始采集
+        /// 定时器，判断是否采集结束
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btn_startCollect_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            List<M_Category> list = new List<M_Category>();
-
-            //选中第几期
-            Control ctl = flp1;
-            switch (tab_all.SelectedIndex)
+            if (S_CollectThread.DS.Tables.Count == S_CollectThread.DataTableCount)
             {
-                case 0: ctl = flp1; break;
-                case 1: ctl = flp2; break;
-                case 2: ctl = flp3; break;
-            }
+                SetButtonEnable(true);
 
-            //获取所有选中的类别
-            foreach (Control ct in ctl.Controls)
-            {
-                if (ct.GetType().ToString().Equals("System.Windows.Forms.CheckBox"))
+                sb_loadingState.AppendLine(String.Format("Time:{2}==>共采集{1}个类别，已经采集 {0} 个类别,采集结束！", S_CollectThread.DS.Tables.Count, S_CollectThread.DataTableCount, DateTime.Now.ToString("HH:mm:ss")));
+                txt_result.Text = sb_loadingState.ToString();
+
+
+                DataTable dt = DataHandler(S_CollectThread.DS);
+                string flag = new ExcelHelper(String.Format("{0}/本次采集数据汇总表.xls", defaultfilePath), "").DatatableToExcel(dt);
+                if (flag != "")
                 {
-                    CheckBox cb = (CheckBox)ct;
-                    if (cb.Checked)
-                    {
-                        M_Category category = new M_Category();
-                        category.Title = cb.Text;
-                        category.Param = cb.Tag.ToString();
-                        category.TimePhase = tab_all.SelectedIndex + 1;
-                        list.Add(category);
-                    }
+                    MessageBox.Show("导出失败！" + flag);
                 }
+
+                MessageBox.Show(String.Format("共抓取数据: {0} 条！", dt.Rows.Count));
+
+                //清空表格集合
+                S_CollectThread.DS = new DataSet();
+
             }
-            foreach (M_Category item in list)
+            else
             {
-                string url_cn_base = item.Param.IndexOf("areano") == -1 ? Config.BaseURL_CN : Config.BaseURL_CN_Imp;
-                string url_en_base = item.Param.IndexOf("areano") == -1 ? Config.BaseURL_EN : Config.BaseURL_EN_Imp;
-                var url_cn = String.Format("{0}?{1}", url_cn_base, item.Param);
-                var url_en = String.Format("{0}?{1}", url_en_base, item.Param);
-                LoadingHandler.Show(this, args =>
-                {
-                    DataTable result_cn = Core.GetAllCompanyName_DataTable(url_cn);
-                    DataTable result_en = Core.GetAllCompanyName_DataTable(url_en);
-                    DataTable dt = S_Core.MergeTableColumn(result_cn, result_en);
+                sb_loadingState.AppendLine(String.Format("Time:{2}==>共采集{1}个类别，已经采集 {0} 个类别", S_CollectThread.DS.Tables.Count, S_CollectThread.DataTableCount, DateTime.Now.ToString("HH:mm:ss")));
+                if (sb_loadingState.Length > 1024) sb_loadingState = new StringBuilder();
+                txt_result.Text = sb_loadingState.ToString();
 
-                    args.Execute(ex =>
-                    {
-                        dgv_Company.DataSource = dt;
-                    });
-
-                    MessageBox.Show(String.Format("总条数：{0}", dt.Rows.Count + 1));
-                });
-            }
-        }
-
-        /// <summary>
-        /// 导出
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_export_Click(object sender, EventArgs e)
-        {
-            string localFilePath = String.Empty;
-
-
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-            //设置文件类型  
-            saveFileDialog1.Filter = " xls files(*.xls)|*.txt|All files(*.*)|*.*";
-            //设置文件名称：
-            saveFileDialog1.FileName = String.Format("{0}_采集结果.xls", DateTime.Now.ToString("yyyyMMddHH"));
-            //保存对话框是否记忆上次打开的目录  
-            saveFileDialog1.RestoreDirectory = true;
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                //获得文件路径  
-                localFilePath = saveFileDialog1.FileName.ToString();
-                DataTable dt = (DataTable)dgv_Company.DataSource;
-
-                bool flag = new ExcelHelper(localFilePath, "").DatatableToExcel(dt);
-                if (flag)
-                {
-                    MessageBox.Show("导出成功!,导出数据条数: " + dt.Rows.Count + " 条");
-                }
-                else
-                {
-                    MessageBox.Show("导出失败！");
-                }
             }
         }
 
@@ -137,7 +94,7 @@ namespace CollectApp
                 CheckBox cb = new CheckBox();
                 cb.Width = 140;
                 cb.Tag = key;
-                cb.Text = ht1[key].ToString();
+                cb.Text = ht1[key].ToString().Replace("&nbsp;", "").Trim().Replace("、", "_");
                 flp1.Controls.Add(cb);
             }
 
@@ -146,7 +103,7 @@ namespace CollectApp
                 CheckBox cb = new CheckBox();
                 cb.Width = 140;
                 cb.Tag = key;
-                cb.Text = ht2[key].ToString();
+                cb.Text = ht2[key].ToString().Replace("&nbsp;", "").Trim().Replace("、", "_");
                 flp2.Controls.Add(cb);
             }
 
@@ -155,12 +112,16 @@ namespace CollectApp
                 CheckBox cb = new CheckBox();
                 cb.Width = 140;
                 cb.Tag = key;
-                cb.Text = ht3[key].ToString();
+                cb.Text = ht3[key].ToString().Replace("&nbsp;", "").Trim().Replace("、", "_");
                 flp3.Controls.Add(cb);
             }
-
         }
 
+        /// <summary>
+        /// 全选或者反选
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cb_all_CheckedChanged(object sender, EventArgs e)
         {
             Control ctl = flp1;
@@ -181,8 +142,66 @@ namespace CollectApp
             }
         }
 
+        #region 单线程
+
         /// <summary>
-        /// 采集并导出
+        /// 采集并导出[方法]
+        /// </summary>
+        /// <param name="floder"></param>
+        private void CollectAndExport(string floder)
+        {
+
+            DataSet ds = new DataSet();
+            List<M_Category> list = GetCategory(tab_all.SelectedIndex);
+
+            //遍历抓取数据
+            foreach (M_Category item in list)
+            {
+                //区分进出口
+                string url_cn_base = item.Param.IndexOf("areano") == -1 ? Config.BaseURL_CN : Config.BaseURL_CN_Imp;
+                string url_en_base = item.Param.IndexOf("areano") == -1 ? Config.BaseURL_EN : Config.BaseURL_EN_Imp;
+                var url_cn = String.Format("{0}?{1}", url_cn_base, item.Param);
+                var url_en = String.Format("{0}?{1}", url_en_base, item.Param);
+
+                LoadingHandler.Show(this, LoadingStyle.None, args =>
+                {
+                    args.Execute(ex =>
+                    {
+                        sb_loadingState.AppendLine(String.Format("正在抓取 {0} ... ", item.Title));
+                        txt_result.Text = sb_loadingState.ToString();
+                    });
+
+                    DataTable result_cn = Core.GetAllCompanyName_DataTable(url_cn, item.TimePhase, item.Title);
+                    DataTable result_en = Core.GetAllCompanyName_DataTable(url_en, item.TimePhase, item.Title);
+                    DataTable dt = S_Core.MergeTableColumn(result_cn, result_en);
+
+                    //添加到dataSet中
+                    dt.TableName = item.Title;
+
+                    totalRecord += dt.Rows.Count;
+
+                    ds.Tables.Add(dt);
+
+                    args.Execute(ex =>
+                    {
+                        sb_loadingState.AppendLine(String.Format("抓取 {0} 结束！ ", item.Title));
+                        txt_result.Text = sb_loadingState.ToString();
+                    });
+                });
+            }
+
+            //导出 DataSet
+            string flag = new ExcelHelper(String.Format("{0}/第{1}期.xls", floder, tab_all.SelectedIndex + 1), "").DataSetToExcel(ds);
+            if (flag != "")
+            {
+                MessageBox.Show("导出失败！" + flag);
+            }
+            MessageBox.Show(String.Format("共抓取数据: {0} 条！", totalRecord));
+        }
+
+
+        /// <summary>
+        /// 采集并导出[点击事件]
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="caie"></param>
@@ -195,27 +214,151 @@ namespace CollectApp
             {
                 fbd.SelectedPath = defaultfilePath;
             }
-            
+
+            //开始抓取
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 defaultfilePath = fbd.SelectedPath;
 
-                collectAndExport(fbd.SelectedPath);
+                CollectAndExport(fbd.SelectedPath);
             }
         }
 
+        #endregion
+
+        #region 多线程
+
         /// <summary>
-        /// 采集并导出
+        /// 多线程采集数据，单个单个文件生成
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_single_Click(object sender, EventArgs e)
+        {
+            ThreadCollect(false);
+        }
+
+        /// <summary>
+        /// 全部采集[多线程]
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_all_Click(object sender, EventArgs e)
+        {
+            ThreadCollect(true);
+        }
+
+        /// <summary>
+        /// 多线程抓取
         /// </summary>
         /// <param name="floder"></param>
-        private void collectAndExport(string floder) {
+        private void ThreadCollect(bool isExportAll = false)
+        {
+            //获取采集类别
+            List<M_Category> list;
+            if (isExportAll)
+                list = GetAllCategory();
+            else
+                list = GetCategory(tab_all.SelectedIndex);
 
-            DataSet ds = new DataSet();
+            if (list.Count > 0)
+            {
+                //获取路径
+                FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+                //导出路径，使用上次选中的值
+                if (defaultfilePath != "")
+                {
+                    fbd.SelectedPath = defaultfilePath;
+                }
+
+                //开始抓取
+                if (fbd.ShowDialog() == DialogResult.OK)
+                {
+                    defaultfilePath = fbd.SelectedPath;
+                    SetButtonEnable(false);
+
+                    S_CollectThread.DataTableCount = list.Count;
+
+                    //开始遍历采集
+                    foreach (M_Category item in list)
+                    {
+                        S_CollectThread collect = new S_CollectThread(item, defaultfilePath);
+                        ThreadStart threadStart = new ThreadStart(collect.run);
+                        Thread thread = new Thread(threadStart);
+                        thread.Start();
+
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("请选中需要采集的类别，或者点击全部采集！","温馨提示:");
+            }
+
+            #region 死循环判断是否全部加在完成[目前不用]
+
+            //StringBuilder sb = new StringBuilder();
+            //LoadingHandler.Show(this, args =>
+            //{
+            //    //判断所有线程是否全部完成
+            //    while (true)
+            //    {
+            //        args.Execute(ex =>
+            //        {
+            //            sb.AppendLine(String.Format("Time:{2}==>共采集{1}个类别，已经采集 {0} 个类别", S_CollectThread.DS.Tables.Count, S_CollectThread.DataTableCount, DateTime.Now.ToString("HH:mm:ss")));
+            //            if (sb.Length > 1024) sb = new StringBuilder();
+            //            txt_result.Text = sb.ToString();
+            //        });
+            //        Thread.Sleep(1000);
+            //        if (S_CollectThread.DS.Tables.Count == S_CollectThread.DataTableCount)
+            //        {
+            //            DataTable dt = DataHandler(S_CollectThread.DS);
+            //            string flag = new ExcelHelper(String.Format("{0}/所有类别数据.xls", floder), "").DatatableToExcel(dt);
+            //            if (flag != "")
+            //            {
+            //                MessageBox.Show("导出失败！" + flag);
+            //            }
+
+            //            MessageBox.Show(String.Format("共抓取数据: {0} 条！", dt.Rows.Count));
+
+            //            //清空表格集合
+            //            S_CollectThread.DS = new DataSet();
+
+            //            args.Execute(ex =>
+            //            {
+            //                sb.AppendLine(String.Format("Time:{2}==>共采集{1}个类别，采集结束！", S_CollectThread.DS.Tables.Count, S_CollectThread.DataTableCount, DateTime.Now.ToString("HH:mm:ss")));
+            //                if (sb.Length > 1024) sb = new StringBuilder();
+            //                txt_result.Text = sb.ToString();
+            //            });
+
+            //            break;
+            //        }
+            //    }
+            //});
+
+            #endregion
+
+        }
+
+
+
+
+        #endregion
+
+        #region 基本方法
+
+        /// <summary>
+        /// 获取类别
+        /// </summary>
+        /// <returns></returns>
+        private List<M_Category> GetCategory(int selectedIndex, bool isAll = false)
+        {
             List<M_Category> list = new List<M_Category>();
 
             //选中第几期
             Control ctl = flp1;
-            switch (tab_all.SelectedIndex)
+            switch (selectedIndex)
             {
                 case 0: ctl = flp1; break;
                 case 1: ctl = flp2; break;
@@ -228,43 +371,101 @@ namespace CollectApp
                 if (ct.GetType().ToString().Equals("System.Windows.Forms.CheckBox"))
                 {
                     CheckBox cb = (CheckBox)ct;
-                    if (cb.Checked)
+                    if (isAll)
                     {
                         M_Category category = new M_Category();
                         category.Title = cb.Text;
                         category.Param = cb.Tag.ToString();
-                        category.TimePhase = tab_all.SelectedIndex + 1;
+                        category.TimePhase = selectedIndex + 1;
                         list.Add(category);
                     }
+                    else
+                    {
+                        if (cb.Checked)
+                        {
+                            M_Category category = new M_Category();
+                            category.Title = cb.Text;
+                            category.Param = cb.Tag.ToString();
+                            category.TimePhase = selectedIndex + 1;
+                            list.Add(category);
+                        }
+                    }
+
                 }
             }
+            return list;
+        }
 
-            //遍历抓取数据
-            foreach (M_Category item in list)
+        /// <summary>
+        /// 所有类别
+        /// </summary>
+        /// <returns></returns>
+        private List<M_Category> GetAllCategory()
+        {
+            List<M_Category> list = new List<M_Category>();
+            list.AddRange(GetCategory(0, true));
+            list.AddRange(GetCategory(1, true));
+            list.AddRange(GetCategory(2, true));
+            return list;
+        }
+
+        /// <summary>
+        /// 文本域自动滚动到最下面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txt_result_TextChanged(object sender, EventArgs e)
+        {
+            txt_result.SelectionStart = txt_result.Text.Length;
+
+            txt_result.ScrollToCaret();
+        }
+
+        /// <summary>
+        /// 把所有表格合并在一起
+        /// </summary>
+        /// <param name="ds"></param>
+        /// <returns></returns>
+        private DataTable DataHandler(DataSet ds)
+        {
+
+            DataTable dt = ds.Tables[0].Clone();
+
+            for (int i = 0; i < ds.Tables.Count; i++)
             {
-                //区分进出口
-                string url_cn_base = item.Param.IndexOf("areano") == -1 ? Config.BaseURL_CN : Config.BaseURL_CN_Imp;
-                string url_en_base = item.Param.IndexOf("areano") == -1 ? Config.BaseURL_EN : Config.BaseURL_EN_Imp;
-                var url_cn = String.Format("{0}?{1}", url_cn_base, item.Param);
-                var url_en = String.Format("{0}?{1}", url_en_base, item.Param);
-                
-                LoadingHandler.Show(this, args =>
-                {
-                    DataTable result_cn = Core.GetAllCompanyName_DataTable(url_cn);
-                    DataTable result_en = Core.GetAllCompanyName_DataTable(url_en);
-                    DataTable dt = S_Core.MergeTableColumn(result_cn, result_en);
+                dt.Merge(ds.Tables[i]);
+            }
+            return dt;
+        }
 
-                    //添加到dataSet中
-                    dt.TableName = item.Title;
-                    ds.Tables.Add(dt);
-                });
+
+        /// <summary>
+        /// 设置按钮是否可用,定时器是否开启，loading是否显示
+        /// </summary>
+        /// <param name="p"></param>
+        private void SetButtonEnable(bool p)
+        {
+            timer1.Enabled = !p;
+            btn_single.Enabled = p;
+            btn_all.Enabled = p;
+            if (!p)
+            {
+                cmd.ShowOpaqueLayer(panel1, 125, true);
+            }
+            else
+            {
+                cmd.HideOpaqueLayer();
             }
 
-            //导出 DataSet
-            bool flag = new ExcelHelper(String.Format("{0}/第{1}期.xls", floder, tab_all.SelectedIndex + 1), "").DataSetToExcel(ds);
-            if (!flag)
+        }
+
+        #endregion
+
+        private void App_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (MessageBox.Show("是否退出程序？", "温馨提示：", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                MessageBox.Show("导出失败！");
+                System.Environment.Exit(0);
             }
         }
     }
