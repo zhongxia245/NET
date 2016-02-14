@@ -20,10 +20,11 @@ namespace CollectApp.common
         public ExcelHelper(string outfilename, string tempfilename) //导出构造数
         {
             //处理文件的格式
-            outFileName = outfilename.Trim().Replace("进口:", "进口_").Replace(" ", "").Replace("&nbsp;", "").Replace("、", "");
-            book = new Workbook();
+            //outFileName = outfilename.Trim().Replace("进口:", "进口_").Replace(" ", "").Replace("&nbsp;", "").Replace("、", "");
+            this.outFileName = outfilename;
+            this.book = new Workbook();
             // book.Open(tempfilename);这里我们暂时不用模板
-            sheet = book.Worksheets[0];
+            this.sheet = book.Worksheets[0];
         }
 
         /// <summary>
@@ -130,6 +131,7 @@ namespace CollectApp.common
             }
             catch (Exception e)
             {
+                Log.Write(e.StackTrace);
                 Log.Write(e.Message);
                 return e.Message;
             }
@@ -154,6 +156,7 @@ namespace CollectApp.common
             }
             catch (Exception e)
             {
+                Log.Write(e.StackTrace);
                 Log.Write(e.Message);
                 return e.Message;
             }

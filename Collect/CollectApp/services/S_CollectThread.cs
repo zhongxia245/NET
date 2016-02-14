@@ -80,7 +80,10 @@ namespace CollectApp.services
             //添加到dataSet中
             dt.TableName = String.Format("第{0}期_{1}", this.Category.TimePhase, this.Category.Title);
 
-            string flag = new ExcelHelper(String.Format("{0}/{1}.xls", FolderPath, String.Format("第{0}期_{1}", this.Category.TimePhase, this.Category.Title)), "").DatatableToExcel(dt);
+            string fileName = String.Format("第{0}期_{1}", this.Category.TimePhase, this.Category.Title);
+            fileName = fileName.Trim().Replace("进口:", "进口_").Replace(" ", "").Replace("&nbsp;", "").Replace("、", "");
+
+            string flag = new ExcelHelper(String.Format("{0}/{1}.xls", FolderPath, fileName), "").DatatableToExcel(dt);
             if (flag != "") {
                 Log.Write(flag);
             }

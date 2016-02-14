@@ -21,3 +21,5 @@ J:\04_VS2013\NET\Collect\CollectApp\obj\Debug\CollectApp.Properties.Resources.re
 J:\04_VS2013\NET\Collect\CollectApp\obj\Debug\CollectApp.csproj.GenerateResource.Cache
 J:\04_VS2013\NET\Collect\CollectApp\obj\Debug\CollectApp.exe
 J:\04_VS2013\NET\Collect\CollectApp\obj\Debug\CollectApp.pdb
+J:\04_VS2013\NET\Collect\CollectApp\bin\Debug\CollectApp.exe.config
+J:\04_VS2013\NET\Collect\CollectApp\obj\Debug\CollectApp.csprojResolveAssemblyReference.cache
