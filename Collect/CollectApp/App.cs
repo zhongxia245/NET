@@ -428,10 +428,16 @@ namespace CollectApp
                     MessageBox.Show("导出失败！" + flag);
                 }
 
-                MessageBox.Show(String.Format("共抓取数据: {0} 条！", dt.Rows.Count));
+                string msg = "采集成功：采集回来的数据与网站上每个类别显示的总条数一致！";
+                if (S_SingleThreadConfig.Sb_ErrorCategory.ToString().Length != 0) {
+                    S_SingleThreadConfig.Sb_ErrorCategory = S_SingleThreadConfig.Sb_ErrorCategory.AppendLine("请查看有问题的类别，尾页的条数是否为总数，个位数上的值。（每页显示10条）");
+                    msg = S_SingleThreadConfig.Sb_ErrorCategory.ToString();
+                }
+                txt_result.Text = msg;
 
+                MessageBox.Show(String.Format("网页上数据共有：{0}条，实际抓取数据: {1} 条！",S_SingleThreadConfig.SingleTotal_site, dt.Rows.Count));
                 //清空表格集合
-                S_SingleThreadConfig.DS = new DataSet();
+                S_SingleThreadConfig.ReSet();
 
             }
             else
