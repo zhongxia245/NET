@@ -17,6 +17,11 @@ namespace CollectApp.common
         public static  string TOTALPAGE = "//div[@id='AspNetPager1']/div[1]";
 
         /// <summary>
+        /// 解析每个类别的数据总条数
+        /// </summary>
+        public static string CATEGORYDATATOTAL = "//div[@class='list_info']";
+
+        /// <summary>
         /// 第一期类别
         /// </summary>
         public static string ONE = "//ul[@id='phase1']/li/a";

@@ -27,6 +27,11 @@ namespace CollectApp.config
         /// 出口，基本地址，英文
         /// </summary>
         public static string BaseURL_EN_Imp = "http://i.cantonfair.org.cn/en/impexhibitorlist.aspx";
+
+        /// <summary>
+        /// 每页显示的条数,用来判断每次是否采集完成，不完成重新采集
+        /// </summary>
+        public static int PageSize = 10;
             
     }
 }

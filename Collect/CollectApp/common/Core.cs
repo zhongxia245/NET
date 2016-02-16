@@ -1,10 +1,14 @@
-﻿using System;
+﻿using CollectApp.config;
+using CollectApp.services;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace CollectApp.common
 {
@@ -20,7 +24,7 @@ namespace CollectApp.common
         #region 2. 爬虫，业务逻辑接口
 
         /// <summary>
-        /// 获取第一期类别
+        /// 获取所有类别
         /// </summary>
         /// <returns></returns>
         public static Hashtable GetAll(string url)
@@ -68,7 +72,9 @@ namespace CollectApp.common
         /// <summary>
         /// 抓取指定站点公司的名称[DataTable]
         /// </summary>
-        /// <param name="url"></param>
+        /// <param name="url">地址</param>
+        /// <param name="timeStage">第几期</param>
+        /// <param name="category">类别</param>
         /// <returns></returns>
         public static DataTable GetAllCompanyName_DataTable(string url,int timeStage,string category)
         {
@@ -79,6 +85,8 @@ namespace CollectApp.common
             //获取文档
             HtmlAgilityPack.HtmlDocument doc = GetHTML(url);
 
+            
+
             //获取当前类别总页数
             int totalPage = GetTotalPage(doc, XPath.TOTALPAGE);
             Console.WriteLine(String.Format("totalPage:{0}", totalPage));
@@ -88,9 +96,23 @@ namespace CollectApp.common
                 string url_page = url + "&page=" + i;
                 Console.WriteLine(String.Format("url_page:{0}", url_page));
                 // Thread.Sleep(500);
-                ds.Tables.Add(GetDataTableByUrl(url_page, XPath.COMPANYNAME, timeStage, category));
+
+                while (true) {
+                    DataTable subDt = GetDataTableByUrl(url_page, XPath.COMPANYNAME, timeStage, category);
+                    //如果不是最后一页，或者采集不满10条，则表示采集不完整,重新采集
+                    if (i != totalPage && subDt.Rows.Count != Config.PageSize)
+                    {
+                        Thread.Sleep(500);
+                        Log.Info(String.Format("采集第{0}期，类别：{1}，条数不满10条:{2},重新采集中...", timeStage, category, subDt.Rows.Count));
+                    }
+                    else {
+                        ds.Tables.Add(subDt);
+                        break;
+                    }
+                }
             }
 
+            //合并所有表格
             dt = GetAllDataTable(ds);
 
             return dt;
@@ -181,18 +203,12 @@ namespace CollectApp.common
         /// </summary>
         /// <param name="url">需要采集的地址</param>
         /// <param name="xPath">解析规则[HtmlAgilityPack类库的解析规则]</param>
+        /// <param name="timeStage">第几期</param>
+        /// <param name="category">类别</param>
         /// <returns></returns>
         public static DataTable GetDataTableByUrl(string url, string xPath,int timeStage=1,string category="")
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("type", System.Type.GetType("System.String"));
-            dt.Columns.Add("category", System.Type.GetType("System.String"));
-            dt.Columns.Add("id", System.Type.GetType("System.String"));
-            dt.Columns.Add("cn", System.Type.GetType("System.String"));
-            //联营
-            dt.Columns.Add("lianying_cn", System.Type.GetType("System.String"));  
-            dt.Columns.Add("en", System.Type.GetType("System.String"));
-            dt.Columns.Add("lianying_en", System.Type.GetType("System.String"));
+            DataTable dt = GetEmptyDataTable();
 
             HtmlAgilityPack.HtmlDocument doc = GetHTML(url);
             //获取所有公司的名称
@@ -206,7 +222,6 @@ namespace CollectApp.common
                 foreach (HtmlAgilityPack.HtmlNode item in collection)
                 {
                     DataRow dr = dt.NewRow();
-
                     //获取企业ID
                     string href = item.Attributes["href"] != null ? item.Attributes["href"].Value : "";
                     string[] strs = href.Split(new char[] { '=' });
@@ -231,6 +246,49 @@ namespace CollectApp.common
             }
             return dt;
         }
+
+        /// <summary>
+        /// 获取该类别的数据总条数
+        /// </summary>
+        /// <param name="doc">HTML文档</param>
+        /// <param name="xPath">解析规则</param>
+        /// <returns></returns>
+        public static int GetCategoryDataCount(string url, string xPath)
+        {
+            HtmlAgilityPack.HtmlDocument doc = GetHTML(url);
+            int total = 0;
+            //获取所有公司的名称
+            HtmlAgilityPack.HtmlNodeCollection collection = doc.DocumentNode.SelectNodes(xPath);
+            if (collection != null) {
+                string strtotal =  collection[0].InnerText;
+                total = GetNumberInt(strtotal);
+            }
+            return total;
+        }
+
+      /// <summary>
+        /// 获取字符串中的数字 
+      /// </summary>
+      /// <param name="str"></param>
+      /// <returns></returns>
+        public static int GetNumberInt(string str)
+        {
+            int result = 0;
+            if (str != null && str != string.Empty)
+            {
+                str = str.Replace("\r\n", "").Replace(" ", "");
+                str = Regex.Replace(str, @"[^\d]*", "");
+                try
+                {
+                    result = int.Parse(str);
+                }
+                catch (Exception)
+                {
+                }
+            }
+            return result;
+        } 
+
 
         /// <summary>
         /// 根据需要采集的地址，和解析规则，采集回相对应的数据[列表数据 DataTable]
@@ -294,6 +352,23 @@ namespace CollectApp.common
                 }
             }
             return newDataTable;                                           //返回新表。
+        }
+
+        /// <summary>
+        /// 生成表格，只有表格结构，没有数据
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable GetEmptyDataTable() {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("type", System.Type.GetType("System.String"));
+            dt.Columns.Add("category", System.Type.GetType("System.String"));
+            dt.Columns.Add("id", System.Type.GetType("System.String"));
+            dt.Columns.Add("cn", System.Type.GetType("System.String"));
+            //联营
+            dt.Columns.Add("lianying_cn", System.Type.GetType("System.String"));
+            dt.Columns.Add("en", System.Type.GetType("System.String"));
+            dt.Columns.Add("lianying_en", System.Type.GetType("System.String"));
+            return dt;
         }
         #endregion
 

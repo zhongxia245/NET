@@ -47,6 +47,8 @@
             this.btn_all = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.btn_Single_All = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Company)).BeginInit();
             this.tab_all.SuspendLayout();
             this.tab_one.SuspendLayout();
@@ -167,10 +169,23 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // btn_Single_All
+            // 
+            resources.ApplyResources(this.btn_Single_All, "btn_Single_All");
+            this.btn_Single_All.Name = "btn_Single_All";
+            this.btn_Single_All.UseVisualStyleBackColor = false;
+            this.btn_Single_All.Click += new System.EventHandler(this.btn_Single_All_Click);
+            // 
             // App
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_Single_All);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_all);
             this.Controls.Add(this.btn_single);
@@ -212,6 +227,8 @@
         private System.Windows.Forms.Button btn_all;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Button btn_Single_All;
     }
 }
 

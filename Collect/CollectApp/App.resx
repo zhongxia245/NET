@@ -120,9 +120,15 @@
   <metadata name="cn.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="cn.HeaderText" xml:space="preserve">
+    <value>中文公司名</value>
+  </data>
   <metadata name="en.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="en.HeaderText" xml:space="preserve">
+    <value>英文公司名</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dgv_Company.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 396</value>
@@ -147,80 +153,26 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;dgv_Company.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <metadata name="cn.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="cn.HeaderText" xml:space="preserve">
-    <value>中文公司名</value>
-  </data>
-  <metadata name="en.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="en.HeaderText" xml:space="preserve">
-    <value>英文公司名</value>
+    <value>7</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tab_all.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="&gt;&gt;tab_one.Name" xml:space="preserve">
-    <value>tab_one</value>
+  <data name="flp1.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;tab_one.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="flp1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;tab_one.Parent" xml:space="preserve">
-    <value>tab_all</value>
-  </data>
-  <data name="&gt;&gt;tab_one.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tab_two.Name" xml:space="preserve">
-    <value>tab_two</value>
-  </data>
-  <data name="&gt;&gt;tab_two.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tab_two.Parent" xml:space="preserve">
-    <value>tab_all</value>
-  </data>
-  <data name="&gt;&gt;tab_two.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tab_three.Name" xml:space="preserve">
-    <value>tab_three</value>
-  </data>
-  <data name="&gt;&gt;tab_three.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tab_three.Parent" xml:space="preserve">
-    <value>tab_all</value>
-  </data>
-  <data name="&gt;&gt;tab_three.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tab_all.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flp1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="tab_all.Size" type="System.Drawing.Size, System.Drawing">
-    <value>644, 191</value>
+  <data name="flp1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>630, 159</value>
   </data>
-  <data name="tab_all.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;tab_all.Name" xml:space="preserve">
-    <value>tab_all</value>
-  </data>
-  <data name="&gt;&gt;tab_all.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tab_all.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;tab_all.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="flp1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;flp1.Name" xml:space="preserve">
     <value>flp1</value>
@@ -261,31 +213,19 @@
   <data name="&gt;&gt;tab_one.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="flp1.AutoScroll" type="System.Boolean, mscorlib">
+  <data name="flp2.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flp1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="flp2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="flp1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flp2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="flp1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flp2.Size" type="System.Drawing.Size, System.Drawing">
     <value>630, 159</value>
   </data>
-  <data name="flp1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;flp1.Name" xml:space="preserve">
-    <value>flp1</value>
-  </data>
-  <data name="&gt;&gt;flp1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flp1.Parent" xml:space="preserve">
-    <value>tab_one</value>
-  </data>
-  <data name="&gt;&gt;flp1.ZOrder" xml:space="preserve">
+  <data name="flp2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="&gt;&gt;flp2.Name" xml:space="preserve">
@@ -327,31 +267,19 @@
   <data name="&gt;&gt;tab_two.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="flp2.AutoScroll" type="System.Boolean, mscorlib">
+  <data name="flp3.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flp2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="flp3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="flp2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flp3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="flp2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flp3.Size" type="System.Drawing.Size, System.Drawing">
     <value>630, 159</value>
   </data>
-  <data name="flp2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;flp2.Name" xml:space="preserve">
-    <value>flp2</value>
-  </data>
-  <data name="&gt;&gt;flp2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flp2.Parent" xml:space="preserve">
-    <value>tab_two</value>
-  </data>
-  <data name="&gt;&gt;flp2.ZOrder" xml:space="preserve">
+  <data name="flp3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="&gt;&gt;flp3.Name" xml:space="preserve">
@@ -393,31 +321,25 @@
   <data name="&gt;&gt;tab_three.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="flp3.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flp3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="flp3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tab_all.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="flp3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>630, 159</value>
+  <data name="tab_all.Size" type="System.Drawing.Size, System.Drawing">
+    <value>644, 191</value>
   </data>
-  <data name="flp3.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="tab_all.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
-  <data name="&gt;&gt;flp3.Name" xml:space="preserve">
-    <value>flp3</value>
+  <data name="&gt;&gt;tab_all.Name" xml:space="preserve">
+    <value>tab_all</value>
   </data>
-  <data name="&gt;&gt;flp3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tab_all.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flp3.Parent" xml:space="preserve">
-    <value>tab_three</value>
+  <data name="&gt;&gt;tab_all.Parent" xml:space="preserve">
+    <value>panel1</value>
   </data>
-  <data name="&gt;&gt;flp3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tab_all.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="cb_all.AutoSize" type="System.Boolean, mscorlib">
@@ -445,13 +367,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cb_all.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btn_collect_export.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btn_collect_export.Location" type="System.Drawing.Point, System.Drawing">
-    <value>373, 214</value>
+    <value>479, 212</value>
   </data>
   <data name="btn_collect_export.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 34</value>
@@ -460,10 +382,7 @@
     <value>11</value>
   </data>
   <data name="btn_collect_export.Text" xml:space="preserve">
-    <value>采集(单线程)</value>
-  </data>
-  <data name="btn_collect_export.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+    <value>采集</value>
   </data>
   <data name="&gt;&gt;btn_collect_export.Name" xml:space="preserve">
     <value>btn_collect_export</value>
@@ -475,7 +394,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_collect_export.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="txt_result.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 258</value>
@@ -502,13 +421,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txt_result.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btn_single.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btn_single.Location" type="System.Drawing.Point, System.Drawing">
-    <value>479, 212</value>
+    <value>288, 212</value>
   </data>
   <data name="btn_single.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 36</value>
@@ -517,7 +436,10 @@
     <value>13</value>
   </data>
   <data name="btn_single.Text" xml:space="preserve">
-    <value>采集</value>
+    <value>采集（多）</value>
+  </data>
+  <data name="btn_single.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;btn_single.Name" xml:space="preserve">
     <value>btn_single</value>
@@ -529,22 +451,25 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_single.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btn_all.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btn_all.Location" type="System.Drawing.Point, System.Drawing">
-    <value>573, 212</value>
+    <value>373, 211</value>
   </data>
   <data name="btn_all.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 36</value>
+    <value>100, 36</value>
   </data>
   <data name="btn_all.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
   </data>
   <data name="btn_all.Text" xml:space="preserve">
-    <value>全部采集</value>
+    <value>全部采集（多）</value>
+  </data>
+  <data name="btn_all.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;btn_all.Name" xml:space="preserve">
     <value>btn_all</value>
@@ -556,7 +481,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_all.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
@@ -577,11 +502,41 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>107, 17</value>
+  </metadata>
+  <data name="btn_Single_All.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btn_Single_All.Location" type="System.Drawing.Point, System.Drawing">
+    <value>571, 212</value>
+  </data>
+  <data name="btn_Single_All.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 34</value>
+  </data>
+  <data name="btn_Single_All.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="btn_Single_All.Text" xml:space="preserve">
+    <value>全部采集</value>
+  </data>
+  <data name="&gt;&gt;btn_Single_All.Name" xml:space="preserve">
+    <value>btn_Single_All</value>
+  </data>
+  <data name="&gt;&gt;btn_Single_All.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_Single_All.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btn_Single_All.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -613,6 +568,12 @@
     <value>timer1</value>
   </data>
   <data name="&gt;&gt;timer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;timer2.Name" xml:space="preserve">
+    <value>timer2</value>
+  </data>
+  <data name="&gt;&gt;timer2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
