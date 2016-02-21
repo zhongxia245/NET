@@ -1,0 +1,9 @@
+20160221125845：   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   在 System.IO.File.Create(String path)
+   在 Aspose.Cells.Workbook.Save(String fileName, SaveOptions saveOptions)
+   在 Aspose.Cells.Workbook.Save(String fileName)
+   在 CollectApp.common.ExcelHelper.DatatableToExcel(DataTable dt, String name) 位置 j:\04_VS2013\NET\公司联系方式采集\CollectApp\common\ExcelHelper.cs:行号 154
+20160221125845：文件“C:\Users\zhongxia\Desktop\252200-252300采集结果.xls”正由另一进程使用，因此该进程无法访问该文件。
+20160221125845：文件“C:\Users\zhongxia\Desktop\252200-252300采集结果.xls”正由另一进程使用，因此该进程无法访问该文件。
